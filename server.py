@@ -36,6 +36,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ── Root endpoint ──
+@app.get("/")
+def root():
+    return {"message": "Agentic RAG API is running successfully 🚀"}
+
 # ── Shared State ──
 _faiss_store = None
 uploaded_files: list[str] = []
