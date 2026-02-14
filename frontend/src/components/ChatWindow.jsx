@@ -49,11 +49,11 @@ export default function ChatWindow({ messages, onSend, onUpload, loading }) {
             }}>
                 <p style={{
                     fontSize: '11px',
-                    color: 'rgba(255,255,255,0.2)',
+                    color: 'rgba(255,255,255,0.15)',
                     fontWeight: 400,
                     letterSpacing: '0.02em',
                 }}>
-                    Developed by <span style={{ color: 'rgba(255,255,255,0.35)', fontWeight: 500 }}>Kiran Kumar Petlu</span>
+                    Developed by <span style={{ color: 'rgba(255,200,230,0.3)', fontWeight: 500 }}>Kiran Kumar Petlu</span>
                 </p>
             </div>
         </div>
@@ -76,19 +76,19 @@ function EmptyState() {
                 padding: '0 16px',
             }}
         >
-            {/* Glass orb */}
+            {/* Glass orb with neon glow */}
             <div style={{
                 width: '80px',
                 height: '80px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1))',
-                border: '1px solid rgba(255,255,255,0.08)',
-                backdropFilter: 'blur(12px)',
+                background: 'linear-gradient(135deg, rgba(255, 50, 150, 0.15), rgba(255, 120, 0, 0.1))',
+                border: '1px solid rgba(255, 150, 200, 0.12)',
+                backdropFilter: 'blur(16px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '24px',
-                boxShadow: '0 8px 32px rgba(99,102,241,0.15), inset 0 1px 0 rgba(255,255,255,0.1)',
+                boxShadow: '0 8px 32px rgba(255, 50, 150, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
             }}>
                 <span style={{ fontSize: '32px' }}>✨</span>
             </div>
@@ -123,11 +123,12 @@ function TypingIndicator() {
             <div
                 style={{
                     padding: '14px 20px',
-                    borderRadius: '16px',
-                    borderBottomLeftRadius: '4px',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    backdropFilter: 'blur(16px)',
+                    borderRadius: '20px',
+                    borderBottomLeftRadius: '6px',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    backdropFilter: 'blur(24px)',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
                 }}
             >
                 <div style={{ display: 'flex', gap: '6px' }}>
@@ -138,7 +139,7 @@ function TypingIndicator() {
                                 width: '8px',
                                 height: '8px',
                                 borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #818cf8, #a78bfa)',
+                                background: 'linear-gradient(135deg, #ff5ca0, #ff8c42)',
                             }}
                             animate={{ y: [0, -6, 0] }}
                             transition={{

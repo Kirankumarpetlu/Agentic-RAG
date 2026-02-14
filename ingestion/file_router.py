@@ -6,7 +6,7 @@ Supported file types: pdf, csv, json.
 
 import os
 
-SUPPORTED_EXTENSIONS = {"pdf", "csv", "json"}
+SUPPORTED_EXTENSIONS = {"pdf", "csv", "json", "txt", "docx"}
 
 
 def route_file(file_path: str) -> str:

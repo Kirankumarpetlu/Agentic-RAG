@@ -46,8 +46,9 @@ export default function App() {
 
   return (
     <div style={{ display: 'flex', height: '100vh', background: 'transparent', position: 'relative' }}>
-      {/* Animated background blobs */}
+      {/* Animated neon liquid wave background */}
       <div className="glass-bg" />
+      <div className="glass-bg-extra" />
 
       {/* Sidebar */}
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />

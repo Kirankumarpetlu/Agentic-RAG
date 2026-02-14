@@ -14,6 +14,47 @@ export default function MessageBubble({ message }) {
         setTimeout(() => setCopied(false), 2000);
     };
 
+    // Frosted glass card styles
+    const userBubbleStyle = {
+        position: 'relative',
+        padding: '16px 22px',
+        borderRadius: '20px',
+        borderBottomRightRadius: '6px',
+        fontSize: '14.5px',
+        lineHeight: '1.7',
+        color: '#fff',
+        background: 'linear-gradient(135deg, rgba(255, 50, 150, 0.3), rgba(200, 50, 255, 0.25), rgba(255, 120, 50, 0.2))',
+        border: '1px solid rgba(255, 150, 200, 0.2)',
+        backdropFilter: 'blur(24px) saturate(1.4)',
+        WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
+        boxShadow: `
+            0 8px 32px rgba(255, 50, 150, 0.2),
+            0 2px 8px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.05)
+        `,
+    };
+
+    const aiBubbleStyle = {
+        position: 'relative',
+        padding: '16px 22px',
+        borderRadius: '20px',
+        borderBottomLeftRadius: '6px',
+        fontSize: '14.5px',
+        lineHeight: '1.7',
+        color: 'rgba(255, 255, 255, 0.9)',
+        background: 'rgba(255, 255, 255, 0.06)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(28px) saturate(1.3)',
+        WebkitBackdropFilter: 'blur(28px) saturate(1.3)',
+        boxShadow: `
+            0 8px 32px rgba(0, 0, 0, 0.25),
+            0 2px 8px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.03)
+        `,
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -26,36 +67,8 @@ export default function MessageBubble({ message }) {
             }}
         >
             <div style={{ maxWidth: '75%' }}>
-                {/* Bubble */}
-                <div
-                    style={{
-                        position: 'relative',
-                        padding: '14px 20px',
-                        borderRadius: '16px',
-                        fontSize: '14.5px',
-                        lineHeight: '1.6',
-                        ...(isUser
-                            ? {
-                                background: 'linear-gradient(135deg, rgba(99,102,241,0.55), rgba(124,58,237,0.5))',
-                                color: '#fff',
-                                borderBottomRightRadius: '4px',
-                                border: '1px solid rgba(255,255,255,0.15)',
-                                backdropFilter: 'blur(16px)',
-                                WebkitBackdropFilter: 'blur(16px)',
-                                boxShadow: '0 4px 20px rgba(99,102,241,0.25), inset 0 1px 0 rgba(255,255,255,0.15)',
-                            }
-                            : {
-                                background: 'rgba(255,255,255,0.05)',
-                                color: 'rgba(255,255,255,0.85)',
-                                borderBottomLeftRadius: '4px',
-                                border: '1px solid rgba(255,255,255,0.08)',
-                                backdropFilter: 'blur(16px)',
-                                WebkitBackdropFilter: 'blur(16px)',
-                                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.06)',
-                            }
-                        ),
-                    }}
-                >
+                {/* Frosted glass bubble */}
+                <div style={isUser ? userBubbleStyle : aiBubbleStyle}>
                     {isUser ? (
                         <p style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{message.content}</p>
                     ) : (
@@ -72,14 +85,14 @@ export default function MessageBubble({ message }) {
                             onClick={handleCopy}
                             style={{
                                 position: 'absolute',
-                                top: '10px',
-                                right: '10px',
+                                top: '12px',
+                                right: '12px',
                                 padding: '6px',
-                                borderRadius: '8px',
-                                background: 'rgba(255,255,255,0.06)',
-                                border: '1px solid rgba(255,255,255,0.06)',
+                                borderRadius: '10px',
+                                background: 'rgba(255, 255, 255, 0.06)',
+                                border: '1px solid rgba(255, 255, 255, 0.08)',
                                 cursor: 'pointer',
-                                color: 'rgba(255,255,255,0.3)',
+                                color: 'rgba(255, 255, 255, 0.3)',
                                 transition: 'all 0.2s',
                                 backdropFilter: 'blur(8px)',
                             }}
@@ -112,12 +125,12 @@ export default function MessageBubble({ message }) {
                                         alignItems: 'center',
                                         gap: '4px',
                                         padding: '4px 10px',
-                                        borderRadius: '10px',
-                                        background: 'rgba(99,102,241,0.12)',
-                                        color: '#a5b4fc',
+                                        borderRadius: '12px',
+                                        background: 'rgba(255, 100, 200, 0.1)',
+                                        color: '#ffb3e0',
                                         fontSize: '11px',
                                         fontWeight: 500,
-                                        border: '1px solid rgba(99,102,241,0.15)',
+                                        border: '1px solid rgba(255, 100, 200, 0.15)',
                                         backdropFilter: 'blur(8px)',
                                     }}
                                 >
@@ -155,10 +168,10 @@ export default function MessageBubble({ message }) {
                                             borderRadius: '3px',
                                             background:
                                                 message.confidence >= 0.8
-                                                    ? 'linear-gradient(90deg, rgba(16,185,129,0.7), rgba(52,211,153,0.8))'
+                                                    ? 'linear-gradient(90deg, rgba(16,185,129,0.8), rgba(52,211,153,0.9))'
                                                     : message.confidence >= 0.5
-                                                        ? 'linear-gradient(90deg, rgba(245,158,11,0.7), rgba(251,191,36,0.8))'
-                                                        : 'linear-gradient(90deg, rgba(239,68,68,0.7), rgba(248,113,113,0.8))',
+                                                        ? 'linear-gradient(90deg, rgba(255,170,0,0.8), rgba(255,200,50,0.9))'
+                                                        : 'linear-gradient(90deg, rgba(255,60,100,0.8), rgba(255,100,150,0.9))',
                                         }}
                                     />
                                 </div>

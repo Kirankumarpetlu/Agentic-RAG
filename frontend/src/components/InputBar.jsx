@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiOutlinePaperAirplane, HiOutlinePlusCircle, HiOutlineCheckCircle, HiOutlineDocumentText } from 'react-icons/hi2';
+import { HiOutlinePaperAirplane, HiOutlinePlusCircle, HiOutlineCheckCircle } from 'react-icons/hi2';
 
 export default function InputBar({ onSend, onUpload, loading }) {
     const [text, setText] = useState('');
@@ -51,13 +51,13 @@ export default function InputBar({ onSend, onUpload, loading }) {
                             maxWidth: '680px',
                             margin: '0 auto 8px',
                             padding: '8px 14px',
-                            borderRadius: '12px',
+                            borderRadius: '14px',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '8px',
                             fontSize: '13px',
-                            backdropFilter: 'blur(16px)',
-                            WebkitBackdropFilter: 'blur(16px)',
+                            backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
                             ...(uploadedFile
                                 ? {
                                     background: 'rgba(16,185,129,0.1)',
@@ -65,9 +65,9 @@ export default function InputBar({ onSend, onUpload, loading }) {
                                     color: '#34d399',
                                 }
                                 : {
-                                    background: 'rgba(99,102,241,0.1)',
-                                    border: '1px solid rgba(99,102,241,0.15)',
-                                    color: '#a5b4fc',
+                                    background: 'rgba(255, 100, 200, 0.08)',
+                                    border: '1px solid rgba(255, 100, 200, 0.15)',
+                                    color: '#ffb3e0',
                                 }),
                         }}
                     >
@@ -105,14 +105,18 @@ export default function InputBar({ onSend, onUpload, loading }) {
                     gap: '0',
                     maxWidth: '680px',
                     margin: '0 auto',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     borderRadius: '28px',
                     padding: '4px 6px 4px 6px',
                     transition: 'all 0.3s ease',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
+                    backdropFilter: 'blur(24px) saturate(1.3)',
+                    WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
+                    boxShadow: `
+                        0 8px 32px rgba(0, 0, 0, 0.2),
+                        0 2px 8px rgba(0, 0, 0, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1)
+                    `,
                 }}
             >
                 {/* Plus icon — triggers file upload */}
@@ -128,7 +132,7 @@ export default function InputBar({ onSend, onUpload, loading }) {
                         border: 'none',
                         padding: '10px 8px 10px 12px',
                         cursor: 'pointer',
-                        color: uploading ? '#818cf8' : 'rgba(255,255,255,0.35)',
+                        color: uploading ? '#ff7eb3' : 'rgba(255,255,255,0.35)',
                         display: 'flex',
                         alignItems: 'center',
                         transition: 'color 0.2s',
@@ -177,15 +181,15 @@ export default function InputBar({ onSend, onUpload, loading }) {
                         alignItems: 'center',
                         justifyContent: 'center',
                         color: '#fff',
-                        border: text.trim() ? '1px solid rgba(255,255,255,0.15)' : '1px solid transparent',
+                        border: text.trim() ? '1px solid rgba(255, 150, 200, 0.2)' : '1px solid transparent',
                         cursor: 'pointer',
                         background: text.trim()
-                            ? 'linear-gradient(135deg, rgba(99,102,241,0.6), rgba(139,92,246,0.5))'
+                            ? 'linear-gradient(135deg, rgba(255, 50, 150, 0.5), rgba(255, 120, 50, 0.4))'
                             : 'rgba(255,255,255,0.08)',
                         backdropFilter: 'blur(8px)',
                         transition: 'all 0.3s ease',
                         boxShadow: text.trim()
-                            ? '0 2px 12px rgba(99,102,241,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
+                            ? '0 2px 12px rgba(255, 50, 150, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15)'
                             : 'none',
                     }}
                 >
