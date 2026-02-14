@@ -16,7 +16,7 @@ export default function ChatWindow({ messages, onSend, onUpload, loading }) {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
-                background: '#1a1a2e',
+                background: 'transparent',
             }}
         >
             {/* Messages area */}
@@ -45,15 +45,15 @@ export default function ChatWindow({ messages, onSend, onUpload, loading }) {
             <div style={{
                 textAlign: 'center',
                 padding: '8px 0 14px',
-                background: '#1a1a2e',
+                background: 'transparent',
             }}>
                 <p style={{
                     fontSize: '11px',
-                    color: 'rgba(255,255,255,0.25)',
+                    color: 'rgba(255,255,255,0.2)',
                     fontWeight: 400,
                     letterSpacing: '0.02em',
                 }}>
-                    Developed by <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 500 }}>Kiran Kumar Petlu</span>
+                    Developed by <span style={{ color: 'rgba(255,255,255,0.35)', fontWeight: 500 }}>Kiran Kumar Petlu</span>
                 </p>
             </div>
         </div>
@@ -76,6 +76,22 @@ function EmptyState() {
                 padding: '0 16px',
             }}
         >
+            {/* Glass orb */}
+            <div style={{
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1))',
+                border: '1px solid rgba(255,255,255,0.08)',
+                backdropFilter: 'blur(12px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '24px',
+                boxShadow: '0 8px 32px rgba(99,102,241,0.15), inset 0 1px 0 rgba(255,255,255,0.1)',
+            }}>
+                <span style={{ fontSize: '32px' }}>✨</span>
+            </div>
             <h2 style={{
                 fontSize: '28px',
                 fontWeight: 600,
@@ -111,13 +127,19 @@ function TypingIndicator() {
                     borderBottomLeftRadius: '4px',
                     background: 'rgba(255,255,255,0.06)',
                     border: '1px solid rgba(255,255,255,0.08)',
+                    backdropFilter: 'blur(16px)',
                 }}
             >
                 <div style={{ display: 'flex', gap: '6px' }}>
                     {[0, 1, 2].map((i) => (
                         <motion.div
                             key={i}
-                            style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#818cf8' }}
+                            style={{
+                                width: '8px',
+                                height: '8px',
+                                borderRadius: '50%',
+                                background: 'linear-gradient(135deg, #818cf8, #a78bfa)',
+                            }}
                             animate={{ y: [0, -6, 0] }}
                             transition={{
                                 repeat: Infinity,

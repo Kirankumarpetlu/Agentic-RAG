@@ -45,7 +45,10 @@ export default function App() {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', background: '#f8fafc' }}>
+    <div style={{ display: 'flex', height: '100vh', background: 'transparent', position: 'relative' }}>
+      {/* Animated background blobs */}
+      <div className="glass-bg" />
+
       {/* Sidebar */}
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
@@ -58,6 +61,8 @@ export default function App() {
           flexDirection: 'column',
           height: '100vh',
           overflow: 'hidden',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         <AnimatePresence mode="wait">
@@ -78,8 +83,6 @@ export default function App() {
             </motion.div>
           )}
 
-
-
           {activeTab === 'history' && (
             <motion.div
               key="history"
@@ -89,13 +92,13 @@ export default function App() {
               style={{ flex: 1, overflowY: 'auto' }}
             >
               <div style={{ maxWidth: '640px', margin: '0 auto', padding: '40px 24px' }}>
-                <h2 style={{ fontSize: '24px', fontWeight: 600, color: '#1e293b', marginBottom: '8px' }}>History</h2>
-                <p style={{ color: '#94a3b8', fontSize: '14px', marginBottom: '32px' }}>
+                <h2 style={{ fontSize: '24px', fontWeight: 600, color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>History</h2>
+                <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '14px', marginBottom: '32px' }}>
                   Your past conversations
                 </p>
                 {messages.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '64px 0' }}>
-                    <p style={{ color: '#cbd5e1', fontSize: '14px' }}>No conversations yet</p>
+                    <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: '14px' }}>No conversations yet</p>
                   </div>
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -105,15 +108,16 @@ export default function App() {
                         <div
                           key={i}
                           style={{
-                            background: '#fff',
-                            borderRadius: '12px',
+                            background: 'rgba(255,255,255,0.05)',
+                            borderRadius: '14px',
                             padding: '16px 20px',
-                            border: '1px solid #f1f5f9',
-                            boxShadow: '0 1px 4px rgba(0,0,0,0.03)',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                            backdropFilter: 'blur(16px)',
+                            boxShadow: '0 2px 12px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.06)',
                           }}
                         >
-                          <p style={{ fontSize: '14px', color: '#334155' }}>{m.content}</p>
-                          <p style={{ fontSize: '11px', color: '#cbd5e1', marginTop: '8px' }}>
+                          <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.8)' }}>{m.content}</p>
+                          <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', marginTop: '8px' }}>
                             Query #{i + 1}
                           </p>
                         </div>
@@ -134,8 +138,8 @@ export default function App() {
               style={{ flex: 1, overflowY: 'auto' }}
             >
               <div style={{ maxWidth: '640px', margin: '0 auto', padding: '40px 24px' }}>
-                <h2 style={{ fontSize: '24px', fontWeight: 600, color: '#1e293b', marginBottom: '8px' }}>Settings</h2>
-                <p style={{ color: '#94a3b8', fontSize: '14px', marginBottom: '32px' }}>
+                <h2 style={{ fontSize: '24px', fontWeight: 600, color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>Settings</h2>
+                <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '14px', marginBottom: '32px' }}>
                   Configure your assistant
                 </p>
 
@@ -147,14 +151,15 @@ export default function App() {
                     <div
                       key={field.label}
                       style={{
-                        background: '#fff',
-                        borderRadius: '12px',
+                        background: 'rgba(255,255,255,0.05)',
+                        borderRadius: '14px',
                         padding: '20px 24px',
-                        border: '1px solid #f1f5f9',
-                        boxShadow: '0 1px 4px rgba(0,0,0,0.03)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        backdropFilter: 'blur(16px)',
+                        boxShadow: '0 2px 12px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.06)',
                       }}
                     >
-                      <label style={{ fontSize: '14px', fontWeight: 500, color: '#334155' }}>
+                      <label style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>
                         {field.label}
                       </label>
                       <input
@@ -166,11 +171,13 @@ export default function App() {
                           marginTop: '8px',
                           width: '100%',
                           padding: '10px 16px',
-                          borderRadius: '10px',
-                          border: '1px solid #e2e8f0',
+                          borderRadius: '12px',
+                          border: '1px solid rgba(255,255,255,0.1)',
                           fontSize: '14px',
-                          color: '#334155',
+                          color: 'rgba(255,255,255,0.8)',
                           outline: 'none',
+                          background: 'rgba(255,255,255,0.04)',
+                          backdropFilter: 'blur(8px)',
                         }}
                       />
                     </div>
@@ -178,25 +185,27 @@ export default function App() {
 
                   <div
                     style={{
-                      background: '#fff',
-                      borderRadius: '12px',
+                      background: 'rgba(255,255,255,0.05)',
+                      borderRadius: '14px',
                       padding: '20px 24px',
-                      border: '1px solid #f1f5f9',
-                      boxShadow: '0 1px 4px rgba(0,0,0,0.03)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      backdropFilter: 'blur(16px)',
+                      boxShadow: '0 2px 12px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.06)',
                     }}
                   >
-                    <label style={{ fontSize: '14px', fontWeight: 500, color: '#334155' }}>Model</label>
+                    <label style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>Model</label>
                     <select
                       style={{
                         marginTop: '8px',
                         width: '100%',
                         padding: '10px 16px',
-                        borderRadius: '10px',
-                        border: '1px solid #e2e8f0',
+                        borderRadius: '12px',
+                        border: '1px solid rgba(255,255,255,0.1)',
                         fontSize: '14px',
-                        color: '#334155',
+                        color: 'rgba(255,255,255,0.8)',
                         outline: 'none',
-                        background: '#fff',
+                        background: 'rgba(15,15,30,0.8)',
+                        backdropFilter: 'blur(8px)',
                       }}
                     >
                       <option>llama-3.1-8b-instant</option>

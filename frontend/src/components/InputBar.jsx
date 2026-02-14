@@ -29,7 +29,6 @@ export default function InputBar({ onSend, onUpload, loading }) {
         try {
             await onUpload(file);
             setUploadedFile(file.name);
-            // Clear success message after 4 seconds
             setTimeout(() => setUploadedFile(null), 4000);
         } catch (err) {
             console.error('Upload failed:', err);
@@ -40,7 +39,7 @@ export default function InputBar({ onSend, onUpload, loading }) {
     };
 
     return (
-        <div style={{ padding: '0 24px 4px', background: '#1a1a2e' }}>
+        <div style={{ padding: '0 24px 4px', background: 'transparent' }}>
             {/* Upload status toast */}
             <AnimatePresence>
                 {(uploading || uploadedFile) && (
@@ -52,20 +51,22 @@ export default function InputBar({ onSend, onUpload, loading }) {
                             maxWidth: '680px',
                             margin: '0 auto 8px',
                             padding: '8px 14px',
-                            borderRadius: '10px',
+                            borderRadius: '12px',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '8px',
                             fontSize: '13px',
+                            backdropFilter: 'blur(16px)',
+                            WebkitBackdropFilter: 'blur(16px)',
                             ...(uploadedFile
                                 ? {
-                                    background: 'rgba(16,185,129,0.12)',
-                                    border: '1px solid rgba(16,185,129,0.2)',
+                                    background: 'rgba(16,185,129,0.1)',
+                                    border: '1px solid rgba(16,185,129,0.15)',
                                     color: '#34d399',
                                 }
                                 : {
-                                    background: 'rgba(99,102,241,0.12)',
-                                    border: '1px solid rgba(99,102,241,0.2)',
+                                    background: 'rgba(99,102,241,0.1)',
+                                    border: '1px solid rgba(99,102,241,0.15)',
                                     color: '#a5b4fc',
                                 }),
                         }}
@@ -105,10 +106,13 @@ export default function InputBar({ onSend, onUpload, loading }) {
                     maxWidth: '680px',
                     margin: '0 auto',
                     background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: '28px',
                     padding: '4px 6px 4px 6px',
-                    transition: 'all 0.2s',
+                    transition: 'all 0.3s ease',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    boxShadow: '0 4px 24px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
                 }}
             >
                 {/* Plus icon — triggers file upload */}
@@ -173,10 +177,16 @@ export default function InputBar({ onSend, onUpload, loading }) {
                         alignItems: 'center',
                         justifyContent: 'center',
                         color: '#fff',
-                        border: 'none',
+                        border: text.trim() ? '1px solid rgba(255,255,255,0.15)' : '1px solid transparent',
                         cursor: 'pointer',
-                        background: text.trim() ? '#fff' : 'rgba(255,255,255,0.12)',
-                        transition: 'all 0.2s',
+                        background: text.trim()
+                            ? 'linear-gradient(135deg, rgba(99,102,241,0.6), rgba(139,92,246,0.5))'
+                            : 'rgba(255,255,255,0.08)',
+                        backdropFilter: 'blur(8px)',
+                        transition: 'all 0.3s ease',
+                        boxShadow: text.trim()
+                            ? '0 2px 12px rgba(99,102,241,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
+                            : 'none',
                     }}
                 >
                     {loading ? (
@@ -188,7 +198,7 @@ export default function InputBar({ onSend, onUpload, loading }) {
                         <HiOutlinePaperAirplane style={{
                             width: '18px',
                             height: '18px',
-                            color: text.trim() ? '#1a1a2e' : 'rgba(255,255,255,0.4)',
+                            color: text.trim() ? '#ffffff' : 'rgba(255,255,255,0.4)',
                         }} />
                     )}
                 </motion.button>

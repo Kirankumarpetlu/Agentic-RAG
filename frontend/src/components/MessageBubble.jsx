@@ -36,16 +36,22 @@ export default function MessageBubble({ message }) {
                         lineHeight: '1.6',
                         ...(isUser
                             ? {
-                                background: 'linear-gradient(135deg, #6366f1, #7c3aed)',
+                                background: 'linear-gradient(135deg, rgba(99,102,241,0.55), rgba(124,58,237,0.5))',
                                 color: '#fff',
                                 borderBottomRightRadius: '4px',
-                                boxShadow: '0 4px 14px rgba(99,102,241,0.3)',
+                                border: '1px solid rgba(255,255,255,0.15)',
+                                backdropFilter: 'blur(16px)',
+                                WebkitBackdropFilter: 'blur(16px)',
+                                boxShadow: '0 4px 20px rgba(99,102,241,0.25), inset 0 1px 0 rgba(255,255,255,0.15)',
                             }
                             : {
-                                background: 'rgba(255,255,255,0.06)',
+                                background: 'rgba(255,255,255,0.05)',
                                 color: 'rgba(255,255,255,0.85)',
                                 borderBottomLeftRadius: '4px',
                                 border: '1px solid rgba(255,255,255,0.08)',
+                                backdropFilter: 'blur(16px)',
+                                WebkitBackdropFilter: 'blur(16px)',
+                                boxShadow: '0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.06)',
                             }
                         ),
                     }}
@@ -70,11 +76,12 @@ export default function MessageBubble({ message }) {
                                 right: '10px',
                                 padding: '6px',
                                 borderRadius: '8px',
-                                background: 'transparent',
-                                border: 'none',
+                                background: 'rgba(255,255,255,0.06)',
+                                border: '1px solid rgba(255,255,255,0.06)',
                                 cursor: 'pointer',
-                                color: 'rgba(255,255,255,0.25)',
+                                color: 'rgba(255,255,255,0.3)',
                                 transition: 'all 0.2s',
+                                backdropFilter: 'blur(8px)',
                             }}
                             title="Copy response"
                         >
@@ -105,12 +112,13 @@ export default function MessageBubble({ message }) {
                                         alignItems: 'center',
                                         gap: '4px',
                                         padding: '4px 10px',
-                                        borderRadius: '8px',
-                                        background: 'rgba(99,102,241,0.15)',
+                                        borderRadius: '10px',
+                                        background: 'rgba(99,102,241,0.12)',
                                         color: '#a5b4fc',
                                         fontSize: '11px',
                                         fontWeight: 500,
-                                        border: '1px solid rgba(99,102,241,0.2)',
+                                        border: '1px solid rgba(99,102,241,0.15)',
+                                        backdropFilter: 'blur(8px)',
                                     }}
                                 >
                                     📄 {src}
@@ -136,6 +144,7 @@ export default function MessageBubble({ message }) {
                                     background: 'rgba(255,255,255,0.06)',
                                     borderRadius: '3px',
                                     overflow: 'hidden',
+                                    border: '1px solid rgba(255,255,255,0.04)',
                                 }}>
                                     <motion.div
                                         initial={{ width: 0 }}
@@ -146,10 +155,10 @@ export default function MessageBubble({ message }) {
                                             borderRadius: '3px',
                                             background:
                                                 message.confidence >= 0.8
-                                                    ? 'linear-gradient(90deg, #10b981, #34d399)'
+                                                    ? 'linear-gradient(90deg, rgba(16,185,129,0.7), rgba(52,211,153,0.8))'
                                                     : message.confidence >= 0.5
-                                                        ? 'linear-gradient(90deg, #f59e0b, #fbbf24)'
-                                                        : 'linear-gradient(90deg, #ef4444, #f87171)',
+                                                        ? 'linear-gradient(90deg, rgba(245,158,11,0.7), rgba(251,191,36,0.8))'
+                                                        : 'linear-gradient(90deg, rgba(239,68,68,0.7), rgba(248,113,113,0.8))',
                                         }}
                                     />
                                 </div>
