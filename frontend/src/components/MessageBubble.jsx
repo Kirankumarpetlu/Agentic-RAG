@@ -139,47 +139,7 @@ export default function MessageBubble({ message }) {
                             ))}
                         </div>
 
-                        {/* Confidence */}
-                        {message.confidence !== undefined && message.confidence !== null && (
-                            <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '12px',
-                                padding: '0 4px',
-                                marginTop: '8px',
-                            }}>
-                                <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>
-                                    Confidence
-                                </span>
-                                <div style={{
-                                    flex: 1,
-                                    height: '6px',
-                                    background: 'rgba(255,255,255,0.06)',
-                                    borderRadius: '3px',
-                                    overflow: 'hidden',
-                                    border: '1px solid rgba(255,255,255,0.04)',
-                                }}>
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        animate={{ width: `${Math.round(message.confidence * 100)}%` }}
-                                        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.5 }}
-                                        style={{
-                                            height: '100%',
-                                            borderRadius: '3px',
-                                            background:
-                                                message.confidence >= 0.8
-                                                    ? 'linear-gradient(90deg, rgba(16,185,129,0.8), rgba(52,211,153,0.9))'
-                                                    : message.confidence >= 0.5
-                                                        ? 'linear-gradient(90deg, rgba(255,170,0,0.8), rgba(255,200,50,0.9))'
-                                                        : 'linear-gradient(90deg, rgba(255,60,100,0.8), rgba(255,100,150,0.9))',
-                                        }}
-                                    />
-                                </div>
-                                <span style={{ fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.45)' }}>
-                                    {Math.round(message.confidence * 100)}%
-                                </span>
-                            </div>
-                        )}
+
                     </motion.div>
                 )}
             </div>

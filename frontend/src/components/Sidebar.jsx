@@ -25,23 +25,9 @@ export default function Sidebar({ activeTab, onTabChange }) {
             }}
         >
             {/* Logo */}
-            <div className="px-5 pt-6 pb-5">
-                <div className="flex items-center gap-3">
-                    <div
-                        className="flex items-center justify-center text-white font-bold text-sm"
-                        style={{
-                            width: '36px',
-                            height: '36px',
-                            minWidth: '36px',
-                            borderRadius: '12px',
-                            background: 'linear-gradient(135deg, rgba(99,102,241,0.6), rgba(139,92,246,0.6))',
-                            backdropFilter: 'blur(12px)',
-                            border: '1px solid rgba(255,255,255,0.15)',
-                            boxShadow: '0 4px 16px rgba(99,102,241,0.25), inset 0 1px 0 rgba(255,255,255,0.15)',
-                        }}
-                    >
-                        AI
-                    </div>
+            <div className="px-6 pt-6 pb-5">
+                <div className="flex items-center">
+
                     <div>
                         <h1 className="text-white font-semibold leading-tight" style={{ fontSize: '15px' }}>
                             Agentic RAG
@@ -109,24 +95,7 @@ export default function Sidebar({ activeTab, onTabChange }) {
             </nav>
 
             {/* Bottom section */}
-            <div style={{ padding: '0 20px 24px' }}>
-                <div
-                    style={{
-                        borderRadius: '14px',
-                        padding: '14px 16px',
-                        background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(255,255,255,0.06)',
-                        backdropFilter: 'blur(8px)',
-                    }}
-                >
-                    <p style={{ color: '#a5b4fc', fontSize: '12px', fontWeight: 600, marginBottom: '4px' }}>
-                        RAG System v1.0
-                    </p>
-                    <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '11px', lineHeight: '1.5' }}>
-                        Upload documents & ask questions powered by AI.
-                    </p>
-                </div>
-            </div>
+
         </aside>
     );
 }
